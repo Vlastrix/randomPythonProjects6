@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Pc</title>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAxoQ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABERAAAAAAABEREQAAAAABEQAREAAAAAEQAAERAAAAARAAAAAAAAABEQAAEREAAAAREAERERAAAAERARABEQAAABEQARAREAAAAREREAERAAAAEREAABEQAAAAAAAAARAAAAAREAABEAAAAAERABEQAAAAABEREQAAAAAAAREQDD/wAAgf8AABj/AAA8fwAAP/8AAB4fAACMDwAAxMcAAOMjAADwMQAA+HgAAP/8AAD+PAAA/xgAAP+BAAD/wwAA" rel="icon" type="image/x-icon" />
+</head>
+<body>
+    <form action="{{ url_for('home') }}" method="POST">
+        <label>PC Name</label>
+        <input name="pc_name" type="text">
+        <label>PC Brand</label>
+        <input name="pc_brand" type="text">
+        <button type="submit">Add PC</button>
+    </form>
+    <h2>Pc in the database:</h2>
+        <ul>
+        {% for pc in all_pc: %}
+        <li>
+
+            {{pc.pc_name}} - {{pc.pc_brand}}
+            <a href="{{ url_for('delete', id=pc['id']) }}">Delete</a> or <a href="{{ url_for('edit', id=pc.id)  }}">Edit Brand</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
